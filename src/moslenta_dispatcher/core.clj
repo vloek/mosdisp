@@ -1,7 +1,6 @@
 (ns moslenta-dispatcher.core
   (:require [clojure.data.json :as json]
-            [moslenta-dispatcher.db :as db])
-  :gen-class)
+            [moslenta-dispatcher.db :as db]))
 
 (defn load-from-url 
   "Content from url to object"
@@ -26,5 +25,5 @@
   (let [url "http://moslenta.ru/export/search.json?from=1451290000"]
     (load-from-url url)))
 
-(defn -main []
-  ())
+(defn -main [& args]
+  (load-content))

@@ -6,4 +6,4 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/data.json "0.2.6"]
                  [com.novemberain/monger "3.0.0-rc2"]]
-  :main moslenta_dispatcher.core)
+  :main moslenta-dispatcher.core)
