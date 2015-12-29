@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/moslenta_dispatcher.iml" filepath="$PROJECT_DIR$/moslenta_dispatcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mosdisp.iml" filepath="$PROJECT_DIR$/mosdisp.iml" />
     </modules>
   </component>
 </project>

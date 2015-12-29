@@ -23,7 +23,17 @@
   "Loaded content from moslenta.ru."
   []
   (let [url "http://moslenta.ru/export/search.json?from=1451290000"]
-    (load-from-url url)))
+    (try (load-from-url url)
+         (catch Exception e nil))))
+
+(def select-entity-and-save
+  (comp select-entity db/insert-data))
+
+(defn dispatch
+  "Dispatch entity to db from api"
+  []
+  (map (select-entity-and-save)
+       (load-content)))
 
 (defn -main [& args]
-  (load-content))
+  (dispatch))
