@@ -12,7 +12,8 @@
 (defn select-entity
   "Select keys from entity"
   [data]
-  (select-keys data ["url"
+  (select-keys data ["id"
+                     "url"
                      "title"
                      "body"
                      "rubric_title"
@@ -26,14 +27,16 @@
     (try (load-from-url url)
          (catch Exception e nil))))
 
-(def select-entity-and-save
-  (comp select-entity db/insert-data))
+(defn blank?
+  [x]
+  (nil? (db/find-entity (x "id"))))
 
 (defn dispatch
   "Dispatch entity to db from api"
   []
-  (map (select-entity-and-save)
-       (load-content)))
+  (map (comp db/insert-data select-entity)
+       (filter blank?
+               (load-content))))
 
 (defn -main [& args]
   (dispatch))
