@@ -5,5 +5,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/data.json "0.2.6"]
-                 [com.novemberain/monger "3.0.0-rc2"]]
+                 [com.novemberain/monger "3.0.0-rc2"]
+                 [org.clojure/core.async "0.2.374"]]
   :main moslenta-dispatcher.core)

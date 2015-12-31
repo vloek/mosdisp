@@ -1,6 +1,8 @@
 (ns moslenta-dispatcher.core
   (:require [clojure.data.json :as json]
-            [moslenta-dispatcher.db :as db]))
+            [moslenta-dispatcher.db :as db]
+            [clojure.core.async :as a :refer [>! <! <!! >!! go chan buffer close! go-loop
+                                              thread alts! alts!! timeout sliding-buffer]]))
 
 (defn load-from-url 
   "Content from url to object"
