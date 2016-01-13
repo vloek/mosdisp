@@ -41,4 +41,5 @@
                (load-content))))
 
 (defn -main [& args]
-  (dispatch))
+  (println "running..")
+  (println (dispatch)))

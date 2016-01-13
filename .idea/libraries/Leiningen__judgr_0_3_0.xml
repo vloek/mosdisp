@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: judgr:0.3.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/judgr/judgr/0.3.0/judgr-0.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

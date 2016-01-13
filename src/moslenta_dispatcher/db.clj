@@ -1,6 +1,7 @@
 (ns moslenta-dispatcher.db
   (:require [monger.core :as mg]
-            [monger.collection :as mc]))
+            [monger.collection :as mc])
+  (:gen-class))
 
 (def conn (mg/connect))
 
