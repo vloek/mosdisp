@@ -24,8 +24,15 @@
                 (str/split text #" "))))
 
 (defn like [text user_id]
-  (.train! classifier (remove-trash text) :liked))
+  (custom-train user_id text :liked))
 
 (defn dislike [text user_id]
-  (.train! classifier (remove-trash text) :dislike))
+  (custom-train user_id text :disliked))
 
+(defn custom-train [user_id text tag]
+  (.train! (classifier-by-user user_id)
+           (remove-trash text)
+           tag))
+
+(defn classifier-by-user [user_id]
+  classifier)
