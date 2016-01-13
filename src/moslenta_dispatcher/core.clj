@@ -42,4 +42,4 @@
 
 (defn -main [& args]
   (println "running..")
-  (println (dispatch)))
+  (doall (dispatch)))
