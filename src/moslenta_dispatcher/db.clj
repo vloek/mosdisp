@@ -9,3 +9,6 @@
 (defn insert-data [data]
   "Insert entity to topics tree"
   (mc/insert-and-return db "topics" data))
+
+(defn find-entity [id]
+  (mc/find-one db "topics" {:id id}))
