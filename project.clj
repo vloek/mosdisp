@@ -4,7 +4,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/data.json "0.2.6"]
-                 [judgr/redis "0.2.2"]
+                 [judgr/mongodb "0.1.3"]
                  [congomongo "0.4.7"]
                  [com.novemberain/monger "3.0.1"]
                  [org.clojure/core.async "0.2.374"]
