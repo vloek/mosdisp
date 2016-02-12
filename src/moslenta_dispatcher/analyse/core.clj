@@ -1,4 +1,4 @@
-(ns moslenta-dispatcher.analyse
+(ns moslenta-dispatcher.analyse.core
   (:require [judgr.core]
             [clojure.string :as str])
   (:use [judgr.core]
