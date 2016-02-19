@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: congomongo:0.4.7">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/congomongo/congomongo/0.4.7/congomongo-0.4.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
