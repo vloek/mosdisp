@@ -11,6 +11,7 @@
                  [com.novemberain/monger "3.0.1"]
                  [org.clojure/core.async "0.2.374"]
                  [judgr "0.3.0"]
+                 [com.taoensso/carmine "2.12.2"]
                  ]
   :plugins [[migratus-lein "0.1.7"]]
   :main moslenta-dispatcher.core)
