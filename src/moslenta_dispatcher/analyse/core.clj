@@ -1,23 +1,19 @@
 (ns moslenta-dispatcher.analyse.core
   (:require [judgr.core]
-            [clojure.string :as str])
+            [clojure.string :as str]
+            [taoensso.carmine :as car :refer (wcar)])
   (:use [judgr.core]
-        [judgr.settings]))
+        [judgr.settings])
+  (:import (moslenta_dispatcher.analyse.core PScheduler)))
 
 (def new-settings
   (update-settings settings
                    [:classes] [:liked :disliked]
-;                   [:database :type] :redis
-;                   [:database :redis] {:database 0
-;                                       :host     "localhost"
-;                                       :port     6379
-;                                       :password nil}
                    [:classifier :default] {:smoothing-factor 4}
                    [:classifier :default :tresholds] {:liked 1.2 :disliked 2.5}
                    [:classifier]))
 
-(defn items-for-user [user_id]
-  )
+(defn items-for-user [user_id])
 
 (defn classifier-by-user [user_id]
   (let [classifier (classifier-from new-settings)]
@@ -42,19 +38,23 @@
            tag))
 
 
-(defprotocol IClassified
-  "Classified protocol"
-  (weight-by-classifier [this classifier]))
+(defn classifier-for-user
+  "classifier by user id"
+  [user-id])
 
 
-(defrecord Article [title content]
-  IClassified
-  (weight-by-classifier [this classifier]
-    (.classify classifier content)))
+(defn last-articles
+  "Select last articles by count"
+  [count])
 
 
-(weight-by-classifier (Article. "test" "test") (classifier-for-test))
+(defn next-articles
+  ([classifier articles]
+   (next-articles classifier articles 20))
+  ([classifier articles count]))
 
+(classifier-for-user user-id)
+  (train (select 100 user-ratings))
 
-
+(next-20-articles (last-100-articles))
 
