@@ -1,10 +1,10 @@
 (ns moslenta-dispatcher.analyse.core
   (:require [judgr.core]
             [clojure.string :as str]
-            [taoensso.carmine :as car :refer (wcar)])
+            [taoensso.carmine :as car :refer (wcar)]
+            [moslenta-dispatcher.db :as db])
   (:use [judgr.core]
-        [judgr.settings])
-  (:import (moslenta_dispatcher.analyse.core PScheduler)))
+        [judgr.settings]))
 
 (def new-settings
   (update-settings settings
@@ -18,7 +18,7 @@
 (defn classifier-by-user [user_id]
   (let [classifier (classifier-from new-settings)]
     (.train-all! classifier (items-for-user user_id))
-  (classifier-from settings)))
+  (classifier)))
 
 (defn classifier-for-test []
   (let [classifier (classifier-from new-settings)]
@@ -42,19 +42,24 @@
   "classifier by user id"
   [user-id])
 
+(defn add-weight
+  "Additional weight to article by classifier"
+  [classifier article]
+  (merge article (.probabilities classifier
+                                 (:body article))))
 
-(defn last-articles
-  "Select last articles by count"
-  [count])
-
-
-(defn next-articles
+(defn articles-with-weight
+  "Take articles with weight by classifier"
   ([classifier articles]
-   (next-articles classifier articles 20))
-  ([classifier articles count]))
+   (articles-with-weight classifier articles 20))
 
-(classifier-for-user user-id)
-  (train (select 100 user-ratings))
+  ([classifier articles count]
+   (take count (map #(add-weight classifier %) articles))))
 
-(next-20-articles (last-100-articles))
+(defn articles-for-user
+  ([user-id]
+  (articles-for-user user-id 20))
 
+  ([user-id count]
+  (articles-with-weight (classifier-for-user user-id)
+                        (db/last-articles count))))

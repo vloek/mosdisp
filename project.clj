@@ -8,6 +8,7 @@
                  [congomongo "0.4.7"]
                  [org.clojure/java.jdbc "0.4.2"]
                  [korma "0.4.2"]
+                 [org.postgresql/postgresql "9.2-1002-jdbc4"]
                  [com.novemberain/monger "3.0.1"]
                  [org.clojure/core.async "0.2.374"]
                  [judgr "0.3.0"]
